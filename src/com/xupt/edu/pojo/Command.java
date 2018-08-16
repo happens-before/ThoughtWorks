@@ -68,11 +68,11 @@ public class Command {
             {
                 System.out.println("Invalid number format​.");
             }
-//            System.out.print(splits[i]+" ");
+//            System.out.println(splits[i]+" ");
 //            System.out.println( );
             //System.out.println(a[0]+" "+a[1]);
-          //  System.out.println(x[countx-1]+" "+y[county-1]);
+           // System.out.println(x[countx-1]+" "+y[county-1]);
         }
-        System.out.println(x[0]+" "+y[0]);
+       // System.out.println(x[0]+" "+y[0]);
     }
 }
