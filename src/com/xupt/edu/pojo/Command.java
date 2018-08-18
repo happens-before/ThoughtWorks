@@ -9,6 +9,14 @@ public class Command {
     int hang;
     int lie;
     String  string;
+    String char1;
+
+    public Command(int hang, int lie, String string, String char1) {
+        this.hang = hang;
+        this.lie = lie;
+        this.string = string;
+        this.char1 = char1;
+    }
 
     public Command() {
     }
