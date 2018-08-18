@@ -33,6 +33,9 @@ public class Main {
 //        command.print();
         //2.采用抽象工厂的设计模式，创建一个MazeFactory来创造一个迷宫maze;
         MazeFactory maze=new Subject();
-        maze.create(command);
+        String [][] result=maze.create(command);
+        maze.print(result);
+        int min=maze.pathMin(result,5,5);
+        System.out.println(min);
     }
 }

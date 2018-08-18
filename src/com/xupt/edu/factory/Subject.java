@@ -9,7 +9,7 @@ import com.xupt.edu.pojo.Command;
  */
 public class Subject implements MazeFactory{
     @Override
-    public void create(Command command) {
+    public String[][] create(Command command) {
         int [] x=new int [100];
         int [] y=new int [100];
         int countx=0;
@@ -102,7 +102,10 @@ public class Subject implements MazeFactory{
                 else System.out.println("Maze format error.");
             }
         }
-        //6.打印迷宫
+        return maze;
+    }
+    public void print(String [][] maze)
+    {
         for(int i=0;i<maze.length;i++)
         {
             for(int j=0;j<maze[i].length;j++)
@@ -112,4 +115,72 @@ public class Subject implements MazeFactory{
             System.out.println( );
         }
     }
+    public int pathMin(String [][]maze,int m,int n)
+    {
+        if(maze.length==0)
+            return 0;
+        int opt[][]=new int[maze.length][maze[0].length];
+        for(int i=0;i<maze.length;i++)
+        {
+            for(int j=0;j<maze[0].length;j++)
+            {
+                if(maze[i][j]=="[W]")
+                    opt[i][j]=0;
+                if(i==1 || j==1)
+                {
+                    opt[1][1]=0;
+                    if(maze[i][1]=="[R]")
+                    {
+                        if(maze[i-1][1]=="[W]")
+                            opt[i][1]=1;
+                        else
+                            opt[i][1]=opt[i-1][1]+1;
+                    }
+                    if(maze[1][j]=="[R]")
+                    {
+                        if(maze[1][j-1]=="[W]")
+                            opt[1][j]=1;
+                        else
+                            opt[1][j]=opt[1][j-1]+1;
+                    }
+                }
+
+            }
+        }
+        int value1=0;
+        int value2=0;
+        for(int i=2;i<maze.length;i++)
+        {
+            for(int j=2;j<maze[0].length;j++)
+            {
+                if(maze[i][j]=="[R]")
+                {
+                    if(maze[i-1][j]=="[R]")
+                    {
+                        value1=opt[i-1][j];
+                    }
+
+                    else{
+                        value1=0;
+                    }
+                    if(maze[i][j+1]=="[R]")
+                    {
+                        value2=opt[i][j+1];
+                    }
+                    else
+                    {
+                        value2=0;
+                    }
+                     opt[i][j]=Math.min(value1,value2)+opt[i][j];
+                }
+                else
+                {
+                    System.out.println("迷宫i="+i+"j="+j+"是墙，走不通");
+                }
+            }
+
+        }
+        return opt[m][n];
+    }
+
 }

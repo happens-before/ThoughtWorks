@@ -21,7 +21,8 @@ public class MazeTest {
     {
         Command command=new Command(3,3, "**0,1 0,2;0,0 1,0;0,1 1,1;0,2 1,2;1,0 1,1;1,1 1,2;1,1 2,1;1,2 2,2;2,0 2,1");
         MazeFactory maze=new Subject();
-        maze.create(command);
+        String [][] result=maze.create(command);
+        maze.print(result);
     }
 
     /**
@@ -36,7 +37,8 @@ public class MazeTest {
     {
         Command command=new Command(-1,3, "0,1 0,2;0,0 1,0;0,1 1,1;0,2 1,2;1,0 1,1;1,1 1,2;1,1 2,1;1,2 2,2;2,0 2,1");
         MazeFactory maze=new Subject();
-        maze.create(command);
+        String [][] result=maze.create(command);
+        maze.print(result);
     }
     /**
      * 设计测试用例：测试格式错误：输入命令的格式不符合约定。
@@ -50,7 +52,8 @@ public class MazeTest {
     {
         Command command=new Command(3,3, "hello world");
         MazeFactory maze=new Subject();
-        maze.create(command);
+        String [][] result=maze.create(command);
+        maze.print(result);
     }
     /**
      * 设计测试用例：测试连通性错误：如果两个网格无法连通，则属于这种错误。
@@ -64,7 +67,8 @@ public class MazeTest {
     {
         Command command=new Command(3,3, "0,1 0,3;0,0 1,0;0,1 1,1;0,2 1,2;1,0 1,1;1,1 1,2;1,1 2,1;1,2 2,2;2,0 2,1");
         MazeFactory maze=new Subject();
-        maze.create(command);
+        String [][] result=maze.create(command);
+        maze.print(result);
     }
 
 }
