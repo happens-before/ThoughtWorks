@@ -35,7 +35,7 @@ public class Main {
         MazeFactory maze=new Subject();
         String [][] result=maze.create(command);
         maze.print(result);
-        int min=maze.pathMin(result,5,5);
-        System.out.println(min);
+//        int min=maze.pathMin(result,5,5);
+//        System.out.println(min);
     }
 }
